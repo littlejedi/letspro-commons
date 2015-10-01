@@ -1,4 +1,4 @@
-package com.liangzhi.commons.hmac;
+package com.letspro.commons.hmac;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

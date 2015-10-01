@@ -1,4 +1,4 @@
-package com.liangzhi.commons.jackson;
+package com.letspro.commons.jackson;
 
 import java.io.IOException;
 

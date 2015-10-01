@@ -1,5 +1,6 @@
 package com.letspro.commons.domain.mongodb;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
@@ -7,15 +8,15 @@ import org.mongodb.morphia.annotations.Id;
 public class Experiment {
     
     @Id
-    private Long id;
+    private ObjectId id;
     
     private String name;
 
-    public Long getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

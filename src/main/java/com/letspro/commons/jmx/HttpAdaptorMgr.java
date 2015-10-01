@@ -1,4 +1,4 @@
-package com.liangzhi.commons.jmx;
+package com.letspro.commons.jmx;
 
 import java.lang.management.ManagementFactory;
 

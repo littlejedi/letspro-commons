@@ -2,6 +2,7 @@ package com.letspro.commons.domain.mongodb;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
@@ -10,7 +11,7 @@ import org.mongodb.morphia.annotations.Reference;
 public class Project {
 
     @Id
-    private Long id;
+    private ObjectId id;
     
     @Reference
     private School school;
@@ -18,11 +19,11 @@ public class Project {
     @Reference
     private List<Experiment> experiments;
 
-    public Long getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
