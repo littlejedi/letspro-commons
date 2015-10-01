@@ -1,5 +1,7 @@
 package com.letspro.commons.domain.mongodb;
 
+import java.util.Date;
+
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -19,9 +21,13 @@ public class School {
 	
     @JsonSerialize(using = ObjectIdSerializer.class)
     @Id
-	public ObjectId id;
+	private ObjectId id;
 	
-	public String name;
+	private String name;
+	
+	private Date created;
+	
+	private Date updated;
 	
 	public School() {};
 	
@@ -44,4 +50,20 @@ public class School {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
 }

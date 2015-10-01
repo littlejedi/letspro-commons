@@ -7,6 +7,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -44,6 +45,13 @@ public class DateUtils {
    */
   public static DateTime nowUtc() {
     return new DateTime().withZone(DateTimeZone.UTC);
+  }
+  
+  /**
+   * @return The current instant in UTC in plain Java Date
+   */
+  public static Date nowUtcDate() {
+    return new DateTime().withZone(DateTimeZone.UTC).toDate();
   }
 
   /**
