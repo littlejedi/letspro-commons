@@ -3,6 +3,7 @@ package com.letspro.commons.domain.mongodb;
 import java.util.List;
 
 import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
@@ -16,7 +17,7 @@ public class Project {
     @Reference
     private School school;
     
-    @Reference
+    @Embedded
     private List<Experiment> experiments;
 
     public ObjectId getId() {
