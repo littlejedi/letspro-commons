@@ -9,13 +9,16 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.letspro.commons.jackson.ObjectIdDeserializer;
 import com.letspro.commons.jackson.ObjectIdSerializer;
 
 @Entity("projects")
 public class Project {
 
     @JsonSerialize(using = ObjectIdSerializer.class)
+    @JsonDeserialize(using = ObjectIdDeserializer.class)
     @Id
     private ObjectId id;
     
@@ -32,6 +35,10 @@ public class Project {
     private Date updated;
     
     public Project() {};
+    
+    public Project(ObjectId id) {
+        this.id = id;
+    }
     
     public Project(String name) {
         this.name = name;

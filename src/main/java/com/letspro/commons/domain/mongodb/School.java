@@ -10,7 +10,9 @@ import org.mongodb.morphia.annotations.Field;
 import org.mongodb.morphia.annotations.IndexOptions;
 import org.mongodb.morphia.annotations.Indexes;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.letspro.commons.jackson.ObjectIdDeserializer;
 import com.letspro.commons.jackson.ObjectIdSerializer;
 
 @Entity("schools")
@@ -20,6 +22,7 @@ import com.letspro.commons.jackson.ObjectIdSerializer;
 public class School {
 	
     @JsonSerialize(using = ObjectIdSerializer.class)
+    @JsonDeserialize(using = ObjectIdDeserializer.class)
     @Id
 	private ObjectId id;
 	
@@ -30,6 +33,10 @@ public class School {
 	private Date updated;
 	
 	public School() {};
+	
+	public School(ObjectId id) {
+	    this.id = id;
+	}
 	
 	public School(String name) {
 	    this.name = name;

@@ -7,18 +7,24 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.letspro.commons.jackson.ObjectIdDeserializer;
 import com.letspro.commons.jackson.ObjectIdSerializer;
 
 @Entity("experiments")
 public class Experiment {
     
     @JsonSerialize(using = ObjectIdSerializer.class)
+    @JsonDeserialize(using = ObjectIdDeserializer.class)
     @Id
     private ObjectId id;
     
     private String name;
     
+    //http://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion
+    @JsonBackReference
     @Reference
     private Project project;
     
@@ -27,6 +33,10 @@ public class Experiment {
     private Date updated;
     
     public Experiment() {};
+    
+    public Experiment(ObjectId id) {
+        this.id = id;
+    }
     
     public Experiment(String name) {
         this.name = name;
