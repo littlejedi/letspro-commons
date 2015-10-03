@@ -24,7 +24,7 @@ public class Project {
     @Reference
     private School school;
     
-    @Embedded
+    @Reference
     private List<Experiment> experiments;
     
     private Date created;

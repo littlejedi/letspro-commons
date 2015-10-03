@@ -5,6 +5,7 @@ import java.util.Date;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.letspro.commons.jackson.ObjectIdSerializer;
@@ -17,6 +18,9 @@ public class Experiment {
     private ObjectId id;
     
     private String name;
+    
+    @Reference
+    private Project project;
     
     private Date created;
     
@@ -42,6 +46,14 @@ public class Experiment {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public Date getCreated() {
