@@ -1,5 +1,6 @@
 package com.letspro.commons.domain.mongodb;
 
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -24,6 +25,10 @@ public class DbSensorDataDocument {
     @Embedded
     private List<DbSensorDataRecord> records;
     
+    private Date created;
+    
+    private Date updated;
+    
     public Long getTimestampInMs() {
         return timestampInMs;
     }
@@ -38,5 +43,21 @@ public class DbSensorDataDocument {
 
     public void setRecords(List<DbSensorDataRecord> records) {
         this.records = records;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }
