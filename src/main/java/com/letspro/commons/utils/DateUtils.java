@@ -53,6 +53,13 @@ public class DateUtils {
   public static Date nowUtcDate() {
     return new DateTime().withZone(DateTimeZone.UTC).toDate();
   }
+  
+  public static Long getMillisFromDateTime(DateTime datetime) {
+      if (datetime == null) {
+          return null;
+      }
+      return datetime.getMillis();
+  }
 
   /**
    * @param year   The year (e.g. 2000)
