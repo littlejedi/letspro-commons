@@ -11,6 +11,7 @@ import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Index;
 import org.mongodb.morphia.annotations.IndexOptions;
 import org.mongodb.morphia.annotations.Indexes;
+import com.google.common.base.Objects;
 
 @Entity("sensordatadocs")
 @Indexes ({
@@ -22,7 +23,6 @@ public class DbSensorDataDocument {
     // Should be milliseconds since Epoch
     private Long timestampInMs;
     
-    @Embedded
     private List<DbSensorDataRecord> records;
     
     private Date created;
@@ -59,5 +59,29 @@ public class DbSensorDataDocument {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(timestampInMs, records, created, updated);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof DbSensorDataDocument) {
+            DbSensorDataDocument that = (DbSensorDataDocument) object;
+            return Objects.equal(this.timestampInMs, that.timestampInMs)
+                    && Objects.equal(this.records, that.records)
+                    && Objects.equal(this.created, that.created)
+                    && Objects.equal(this.updated, that.updated);
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(this).add("timestampInMs", timestampInMs)
+                .add("records", records).add("created", created)
+                .add("updated", updated).toString();
     }
 }
