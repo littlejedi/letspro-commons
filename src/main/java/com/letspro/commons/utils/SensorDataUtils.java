@@ -5,10 +5,21 @@ import java.util.List;
 import org.bson.Document;
 
 import com.letspro.commons.domain.SensorDataRecord;
+import com.letspro.commons.domain.elastic.SensorDataDocument;
 import com.letspro.commons.domain.mongodb.DbSensorDataDocument;
 import com.letspro.commons.domain.mongodb.DbSensorDataRecord;
 
 public class SensorDataUtils {
+    
+    public static SensorDataDocument toSensorDataDocument(SensorDataRecord record) {
+        SensorDataDocument doc = new SensorDataDocument();
+        doc.setDataType(record.getDataType());
+        doc.setExperimentId(record.getExperimentId());
+        doc.setSensorId(record.getSensorId());
+        doc.setTimestamp(record.getTimestampInMs());
+        doc.setValue(record.getValue());
+        return doc;
+    }
     
     public static DbSensorDataRecord toDbSensorDataRecord(SensorDataRecord record) {
         DbSensorDataRecord db = new DbSensorDataRecord();
@@ -43,6 +54,16 @@ public class SensorDataUtils {
             record.setExperimentId(records.getString("experimentId"));
             record.setValue(records.getString("value"));
         }
+        return record;
+    }
+    
+    public static SensorDataRecord toSensorDataRecord(SensorDataDocument doc) {
+        SensorDataRecord record = new SensorDataRecord();
+        record.setDataType(doc.getDataType());
+        record.setExperimentId(doc.getExperimentId());
+        record.setSensorId(doc.getSensorId());
+        record.setTimestampInMs(doc.getTimestamp());
+        record.setValue(doc.getValue());
         return record;
     }
 }
