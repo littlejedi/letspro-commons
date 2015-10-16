@@ -27,6 +27,8 @@ public class FileUploadSession {
     
     private Date created;
     
+    private Date updated;
+    
     private Date statusRequested;
     
     public ObjectId getId() {
@@ -60,6 +62,14 @@ public class FileUploadSession {
     public void setFileType(int fileType) {
         this.fileType = fileType;
     }
+    
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
 
     public Date getCreated() {
         return created;
@@ -68,7 +78,7 @@ public class FileUploadSession {
     public void setCreated(Date created) {
         this.created = created;
     }
-
+    
     public Date getStatusRequested() {
         return statusRequested;
     }
@@ -79,8 +89,7 @@ public class FileUploadSession {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, uuid, path, fileType, created,
-                statusRequested);
+        return Objects.hashCode(id, uuid, path, fileType, created, updated, statusRequested);
     }
 
     @Override
@@ -92,6 +101,7 @@ public class FileUploadSession {
                     && Objects.equal(this.path, that.path)
                     && Objects.equal(this.fileType, that.fileType)
                     && Objects.equal(this.created, that.created)
+                    && Objects.equal(this.updated, that.updated)
                     && Objects
                             .equal(this.statusRequested, that.statusRequested);
         }
@@ -103,6 +113,7 @@ public class FileUploadSession {
         return Objects.toStringHelper(this).add("id", id).add("uuid", uuid)
                 .add("path", path).add("fileType", fileType)
                 .add("created", created)
+                .add("updated", updated)
                 .add("statusRequested", statusRequested).toString();
     }
 }

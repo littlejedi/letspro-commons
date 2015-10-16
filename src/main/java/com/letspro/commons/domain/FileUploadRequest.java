@@ -1,20 +1,13 @@
 package com.letspro.commons.domain;
 
 public class FileUploadRequest {
-    
-    private String filename;
-    
+       
     private int fileType;
     
-    private int bytes;
-
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
+    /**
+     * Bytes offset, indicates where the file should start being written
+     */
+    private long offset;
 
     public int getFileType() {
         return fileType;
@@ -24,11 +17,11 @@ public class FileUploadRequest {
         this.fileType = fileType;
     }
 
-    public int getBytes() {
-        return bytes;
+    public long getOffset() {
+        return offset;
     }
 
-    public void setBytes(int bytes) {
-        this.bytes = bytes;
+    public void setOffset(long offset) {
+        this.offset = offset;
     }
 }
