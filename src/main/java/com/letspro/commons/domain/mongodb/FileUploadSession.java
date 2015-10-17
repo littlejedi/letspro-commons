@@ -30,10 +30,7 @@ public class FileUploadSession {
     private String uuid;
     
     private String path;
-    
-    /**
-     * Mandatory field to indicate what type of file is being uploaded
-     */
+        
     private Integer fileType;
     
     private Date created;
@@ -98,33 +95,5 @@ public class FileUploadSession {
         this.statusRequested = statusRequested;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id, uuid, path, fileType, created, updated, statusRequested);
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (object instanceof FileUploadSession) {
-            FileUploadSession that = (FileUploadSession) object;
-            return Objects.equal(this.id, that.id)
-                    && Objects.equal(this.uuid, that.uuid)
-                    && Objects.equal(this.path, that.path)
-                    && Objects.equal(this.fileType, that.fileType)
-                    && Objects.equal(this.created, that.created)
-                    && Objects.equal(this.updated, that.updated)
-                    && Objects
-                            .equal(this.statusRequested, that.statusRequested);
-        }
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return Objects.toStringHelper(this).add("id", id).add("uuid", uuid)
-                .add("path", path).add("fileType", fileType)
-                .add("created", created)
-                .add("updated", updated)
-                .add("statusRequested", statusRequested).toString();
-    }
+    
 }

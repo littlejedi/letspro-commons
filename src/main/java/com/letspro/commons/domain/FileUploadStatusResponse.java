@@ -2,39 +2,30 @@ package com.letspro.commons.domain;
 
 public class FileUploadStatusResponse {
     
-    private String filename;
+    private String uuid;
     
-    private long bytesUploaded;
-    
-    private int status;
-    
+    private Long bytesUploaded;
+        
     public FileUploadStatusResponse() {};
     
-    public FileUploadStatusResponse(FileUploadStatus status) {
-        this.status = status.getValue();
+    public FileUploadStatusResponse(Long bytes, String uuid) {
+        this.bytesUploaded = bytes;
+        this.uuid = uuid;
     }
-
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
+    
     public long getBytesUploaded() {
         return bytesUploaded;
     }
 
-    public void setBytesUploaded(long bytesUploaded) {
+    public void setBytesUploaded(Long bytesUploaded) {
         this.bytesUploaded = bytesUploaded;
     }
-
-    public int getStatus() {
-        return status;
+    
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }
